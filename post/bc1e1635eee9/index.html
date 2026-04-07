@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Fenz Han">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://fengze-han.github.io/post/bc1e1635eee9/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java编程初学记录">
+<meta property="og:url" content="https://fengze-han.github.io/post/bc1e1635eee9/index.html">
+<meta property="og:site_name" content="Fenz Han">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fengze-han.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-10-12T12:15:08.000Z">
+<meta property="article:modified_time" content="2026-03-01T05:17:30.000Z">
+<meta property="article:author" content="Fenz Han">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="编程练习">
+<meta property="article:tag" content="基础语法">
+<meta property="article:tag" content="算法入门">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fengze-han.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/logomain.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logomain.png">
+    <meta name="theme-color" content="#63a4a8">
+    <link rel="shortcut icon" href="/images/logomain.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Java编程初学记录 | Fenz Han
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+        
+<script src="/js/build/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"fengze-han.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":null,"skip_dirs":[]}},"colors":{"primary":"#63a4a8","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.webp","dark":"/images/dark.webp"},"title":"星隐拾光笺","subtitle":{"text":["This is the first message","This is the second message","etc"],"hitokoto":{"enable":true,"show_author":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"3.8rem","subtitle_size":"1.8rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"center","links":[{"icon":"fa-brands fa-github","url":"https://github.com/fengze-han/"},{"icon":"fa-brands fa-bilibili","url":"https://space.bilibili.com/351993504"},{"icon":"fa-solid fa-at","url":"fengze_han@163.com"},{"icon":"fa-regular fa-square-rss","url":"https://www.fenz.top/rss2.xml"}],"qrs":[]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":true,"color":{"left":"#63a4a8","right":"#d7e3d1","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"随笔":{"path":"/essays","icon":"fa-regular fa-chart-bar"},"About":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Hello World!","show_on_mobile":true,"links":{"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"随笔":{"path":"/essays","icon":"fa-regular fa-comment"},"RSS":{"path":"https://www.starin.top/rss2.xml","icon":"fa-regular fa-square-rss"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2024/9/25 17:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2024/9/25 17:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Fenz Han" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Fenz Han" type="application/rss+xml">
+</head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        Fenz Han
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({ loop: true })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [20, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                filter: ['blur(5px)', 'blur(0px)'],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: (el, i) => 300 + 20 * i,
+            })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [0, -20],
+                opacity: [1, 0],
+                filter: ['blur(0px)', 'blur(5px)'],
+                easing: "easeInExpo",
+                duration: 1000,
+                delay: (el, i) => 15 * i,
+                complete: function() {
+                    hidePreloader();
+                }
+            }, '-=700');
+
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Fenz Han
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/essays"
+                                        >
+                                    <i class="fa-regular fa-chart-bar fa-fw"></i>
+                                    随笔
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/essays"
+                        >
+                            <span>
+                                随笔
+                            </span>
+                            
+                                <i class="fa-regular fa-chart-bar fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>归档</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>分类</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           target="_blank" rel="noopener" href="https://www.starin.top/rss2.xml"
+                        >
+                            <span>RSS</span>
+                            <i class="fa-regular fa-square-rss fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">87</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">25</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Java编程初学记录</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/logomain.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Fenz Han</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-10-12 20:15:08</span>
+        <span class="mobile">2025-10-12 20:15:08</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-03-01 13:17:30</span>
+            <span class="mobile">2026-03-01 13:17:30</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Java/">Java</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java/">Java</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BC%96%E7%A8%8B%E7%BB%83%E4%B9%A0/">编程练习</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/">算法入门</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>5.6k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>26 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="记录初学Java时练习过的题目"><a href="#记录初学Java时练习过的题目" class="headerlink" title="记录初学Java时练习过的题目~"></a>记录初学Java时练习过的题目~</h2><h3 id="1、1-2-…-10-的值"><a href="#1、1-2-…-10-的值" class="headerlink" title="1、1!+2!+…+10!的值"></a>1、1!+2!+…+10!的值</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.编写一个Java程序，求1!+2!+…+10!的值，程序文件命名为“FactoriesSum.java”。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FactoriesSum</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>,a=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++,a=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=i;j++)&#123;</span><br><span class="line">                a*=j;</span><br><span class="line">            &#125;</span><br><span class="line">            sum+=a;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;1!+2!+…+10!=&quot;</span>+sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="2、-输出从100-200-之间（包括100和200）的所有质数"><a href="#2、-输出从100-200-之间（包括100和200）的所有质数" class="headerlink" title="2、 输出从100-200 之间（包括100和200）的所有质数"></a>2、 输出从100-200 之间（包括100和200）的所有质数</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.编写一个Java程序，输出从100-200 之间（包括100和200）的所有质数，以空格分隔方式输出这些数字，程序文件命名为“PrimeNumer.java”。</span></span><br><span class="line"><span class="comment">//提示：质数为大于1的自然数中，除了1和它本身以外不能被其他数整除的自然数。例如2,3,5,7……</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrimeNumer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">100</span>,t=<span class="number">0</span>;i&lt;=<span class="number">200</span>;i++,t=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> j;</span><br><span class="line">            <span class="keyword">for</span>(j=<span class="number">2</span>;j&lt;(<span class="type">int</span>)(i/<span class="number">2</span>);j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i%j!=<span class="number">0</span>)</span><br><span class="line">                    t++;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(j==(<span class="type">int</span>)(i/<span class="number">2</span>))</span><br><span class="line">                System.out.printf(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="3-求100-999之间的水仙花数"><a href="#3-求100-999之间的水仙花数" class="headerlink" title="3 求100-999之间的水仙花数"></a>3 求100-999之间的水仙花数</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3.编写一个Java程序，求100-999之间的水仙花数，程序文件命名为“Narcissus.java”。</span></span><br><span class="line"><span class="comment">// 提示：水仙花数为一个数的每一位数字的立方之和等于这个数，如数字153，1^3+5^3+3^3=153，以空格分隔输出这些数字。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Narcissus</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">100</span>;i&lt;=<span class="number">999</span>;i++)&#123;</span><br><span class="line">            <span class="type">int</span> a=i%<span class="number">10</span>;</span><br><span class="line">            <span class="type">int</span> b=i/<span class="number">10</span>%<span class="number">10</span>;</span><br><span class="line">            <span class="type">int</span> c=i/<span class="number">100</span>;</span><br><span class="line">            <span class="keyword">if</span>(Math.pow(a,<span class="number">3</span>)+Math.pow(b,<span class="number">3</span>)+Math.pow(c,<span class="number">3</span>)==i)</span><br><span class="line">                System.out.printf(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="4-、输出1949年-2023年内的闰年"><a href="#4-、输出1949年-2023年内的闰年" class="headerlink" title="4 、输出1949年-2023年内的闰年"></a>4 、输出1949年-2023年内的闰年</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//4.编写一个Java程序，输出1949年-2023年内的闰年，要求按行输出，一行5个年份，用空格分隔，程序文件命名为“LeapYear.java”。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LeapYear</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1949</span>,a=<span class="number">0</span>; i &lt;= <span class="number">2023</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((i % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; i % <span class="number">100</span> != <span class="number">0</span>) || i % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.printf(<span class="string">&quot;%d\t&quot;</span>, i);</span><br><span class="line">                a++;</span><br><span class="line">                <span class="keyword">if</span>(a%<span class="number">5</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                    System.out.print(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5、“动物”类"><a href="#5、“动物”类" class="headerlink" title="5、“动物”类"></a>5、“动物”类</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.编写Java程序实现如下功能</span></span><br><span class="line"><span class="comment">//（1）设计一个“动物”类：Animal，包括：</span></span><br><span class="line"><span class="comment">//①两个公有属性：name（字符串类型）和age（整形）；</span></span><br><span class="line"><span class="comment">//②两个公有方法：eat（void类型，方法参数为：一个字符串类型）和move（void类型，方法参数为空），方法内部各自打印一行语句。</span></span><br><span class="line"><span class="comment">//（2）接下来设计“猫”类：Cat，继承“Animal”类，新增一个公有属性：color（字符串类型）。</span></span><br><span class="line"><span class="comment">//在“猫”类请实现以下方法：</span></span><br><span class="line"><span class="comment">//①构造方法：参数列表为：name、age、color，通过构造方法可以设置猫的这三个属性。</span></span><br><span class="line"><span class="comment">//②公有方法catchAnimal (void类型，方法参数为：一个Animal类型)，方法内部打印：[猫的名字]捉住了[动物的名字]。例如：小花猫捉住了老鼠。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Animal mouse=<span class="keyword">new</span> <span class="title class_">Animal</span>(<span class="string">&quot;老鼠&quot;</span>,<span class="number">999</span>);</span><br><span class="line">        <span class="type">Cat</span> <span class="variable">cat</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Cat</span>(<span class="string">&quot;汤姆猫&quot;</span>,<span class="number">3</span>,<span class="string">&quot;蓝色&quot;</span>);</span><br><span class="line">        cat.catchAnimal(mouse);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Animal</span><span class="params">(String name1, <span class="type">int</span> age1)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name1;</span><br><span class="line">        <span class="built_in">this</span>.age = age1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">(String s)</span>&#123;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">move</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;呼..呼..&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String color;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Cat</span><span class="params">(String name, <span class="type">int</span> age,String color)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name, age);</span><br><span class="line">        <span class="built_in">this</span>.color=color;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">catchAnimal</span><span class="params">(Animal A)</span>&#123;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>.name+<span class="string">&quot;捉住了&quot;</span>+A.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="6、形状的抽象类"><a href="#6、形状的抽象类" class="headerlink" title="6、形状的抽象类"></a>6、形状的抽象类</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2.编写程序，实现以下功能：</span></span><br><span class="line"><span class="comment">//（1）定义一个形状的抽象类：Shape，包含两个抽象方法：</span></span><br><span class="line"><span class="comment">//①getArea：获取形状的面积；</span></span><br><span class="line"><span class="comment">//② getPerimeter：获取形状的周长；</span></span><br><span class="line"><span class="comment">//（2）再定义两个子类-圆形类和矩形类：Circle和Rectangle，分别继承自Shape类。</span></span><br><span class="line"><span class="comment">//① Circle类中需要包含一个私有变量-半径radius和一个构造方法，</span></span><br><span class="line"><span class="comment">// 构造方法带有一个参数radius，通过构造方法可以设置矩形的半径；并且需要实现getArea和getPerimeter方法分别获取圆形的面积和周长。</span></span><br><span class="line"><span class="comment">//② Rectangle类中需要包含两个私有变量-长度length和宽度width；</span></span><br><span class="line"><span class="comment">// 以及构造方法，构造方法带有两个参数length和width，通过构造方法可以设置矩形的长和宽；并且需要实现getArea和getPerimeter方法分别获取矩形的面积和周长。</span></span><br><span class="line"><span class="comment">//3.最后，编写一个测试类Test，在main方法中创建一个Circle和一个Rectangle对象，并分别调用它们的getArea和getPerimeter方法，打印它们的面积和周长。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Circle Y=<span class="keyword">new</span> <span class="title class_">Circle</span>(<span class="number">5</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;圆的面积为&quot;</span>+Y.getArea()+<span class="string">&quot;,周长为&quot;</span>+Y.getPerimeter());</span><br><span class="line">    Rectangle J=<span class="keyword">new</span> <span class="title class_">Rectangle</span>(<span class="number">4</span>,<span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;矩形的面积为:&quot;</span>+J.getArea()+<span class="string">&quot;,周长为:&quot;</span>+J.getPerimeter());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">getPerimeter</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> <span class="keyword">extends</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> radius;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">public</span>  <span class="type">double</span> PI=<span class="number">3.1415926</span>;</span><br><span class="line">    Circle(<span class="type">double</span> radius)&#123;</span><br><span class="line">        <span class="built_in">this</span>.radius=radius;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.pow(<span class="built_in">this</span>.radius,<span class="number">2</span>)*PI;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPerimeter</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>*radius*PI;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> <span class="keyword">extends</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> length,width;</span><br><span class="line">    Rectangle(<span class="type">double</span> length,<span class="type">double</span> width)&#123;</span><br><span class="line">        <span class="built_in">this</span>.length=length;</span><br><span class="line">        <span class="built_in">this</span>.width=width;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.length*<span class="built_in">this</span>.width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPerimeter</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">this</span>.length+<span class="built_in">this</span>.width)*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="7-、声音模拟器"><a href="#7-、声音模拟器" class="headerlink" title="7 、声音模拟器"></a>7 、声音模拟器</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.*;</span><br><span class="line"><span class="comment">//3.编写Java程序，完成如下功能：</span></span><br><span class="line"><span class="comment">//设计一个声音模拟器，希望模拟器可以模拟出喜多动物的叫声，要求如下：</span></span><br><span class="line"><span class="comment">//编写接口Animal。Animal接口有两个抽象方法cry()和getAnimalName()，即要求，实现该接口的各种具体动物类给出自己的叫声和种类名称。</span></span><br><span class="line"><span class="comment">//设计一个动物声音模拟器,希望模拟器可以模拟许多动物的叫声,要求如下:</span></span><br><span class="line"><span class="comment">//(1)编写接口Animal。Animal接口有两个抽象方法cry()和 getAnimalName(),即要求实现该接口的各种具体动物类给出自己的叫声和种类名称。</span></span><br><span class="line"><span class="comment">//(2)编写模拟器类Simulator。该类有一个 playSound(Animal animal)方法,该方法的参数是 Animal类型,</span></span><br><span class="line"><span class="comment">// 即参数animal可以调用实现Animal接口类重写的cry()方法播放具体动物的声音,调用重写的getAnimalName()方法显示动物种类的名称。</span></span><br><span class="line"><span class="comment">//(3)编写实现Animal接口的 Dog类和Cat类。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Cat mao=<span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line">        Dog dog=<span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">        Simulator s=<span class="keyword">new</span> <span class="title class_">Simulator</span>();</span><br><span class="line">        s.playSound(mao);</span><br><span class="line">        s.playSound(dog);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">cry</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title function_">getAnimalName</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Simulator</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">playSound</span><span class="params">(Animal animal)</span>&#123;</span><br><span class="line">        System.out.printf(animal.getAnimalName()+<span class="string">&quot;的叫声是&quot;</span>);</span><br><span class="line">        animal.cry();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">cry</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;汪汪！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAnimalName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (String)<span class="string">&quot;狗&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">implements</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">cry</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;喵呜~&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAnimalName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (String)<span class="string">&quot;猫&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="8、银行Bank"><a href="#8、银行Bank" class="headerlink" title="8、银行Bank"></a>8、银行Bank</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//4.假设银行Bank已有了按整年计算利息的一般方法，其中year只能取整数，利率计算规则为：存款数*年数*利率。</span></span><br><span class="line"><span class="comment">//建设银行（ConstructionBank）和中国银行（ChinaBank）都是银行的子类，准备隐藏继承的成员变量year</span></span><br><span class="line"><span class="comment">// 并重写计算利息的方法，即自己声明一个double类型的year变量，比如当year取值为5.216时，表示要计算5年零216天的利息</span></span><br><span class="line"><span class="comment">// 但希望首先按照银行Bank的方法computerInterest()计算出5整年的利息，然后再自己计算216天的利息，</span></span><br><span class="line"><span class="comment">// 那么，建设银行就必须把5.216的整数部分赋给隐藏的year，并让super调用隐藏的，按整年计算利息的方法。</span></span><br><span class="line"><span class="comment">//分别创建ConstructionBank类和ChinaBank类继承Bank类，子类重写父类的computerInterest()方法，</span></span><br><span class="line"><span class="comment">// 创建主类SaveMoney，在主类中创建ConstructionBank和ChinaBa=nk对象，初始化存款数为10000</span></span><br><span class="line"><span class="comment">// 存款时间为3.216年（3年零216天）、建设银行年利率为2.8%，日利率为0.002%，</span></span><br><span class="line"><span class="comment">// 中国银行年利率为2.9%，日利率为0.0015%，输出两家银行的利息，输出格式为：</span></span><br><span class="line"><span class="comment">//%d元存在建设银行%d年零%d天的利息为%f元\n</span></span><br><span class="line"><span class="comment">//%d元存在中国银行%d年零%d天的利息为%f元\n</span></span><br><span class="line"><span class="comment">//如：</span></span><br><span class="line"><span class="comment">//10000元存在建设银行3年零216天的利息为883.2元</span></span><br><span class="line"><span class="comment">//10000元存在中国银行3年零216天的利息为902.4元</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SaveMoney</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ConstructionBank</span> <span class="variable">JS</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConstructionBank</span>(<span class="number">10000</span>,<span class="number">3.216</span>,<span class="number">0.028</span>,<span class="number">0.00002</span>);</span><br><span class="line">        <span class="type">ChinaBank</span> <span class="variable">ZH</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ChinaBank</span>(<span class="number">10000</span>,<span class="number">3.216</span>,<span class="number">0.029</span>,<span class="number">0.000015</span>);</span><br><span class="line">        System.out.printf(<span class="string">&quot;%d元存在建设银行%d年零%d天的利息为%f元\n&quot;</span>,JS.saveMoney,(<span class="type">int</span>)Math.floor(JS.year),(<span class="type">int</span>)(<span class="number">1000</span>*(JS.year-Math.floor(JS.year))),JS.computerInterest());</span><br><span class="line">        System.out.printf(<span class="string">&quot;%d元存在中国银行%d年零%d天的利息为%f元\n&quot;</span>,ZH.saveMoney,(<span class="type">int</span>)Math.floor(ZH.year),(<span class="type">int</span>)(<span class="number">1000</span>*(ZH.year-Math.floor(ZH.year))),ZH.computerInterest());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bank</span>&#123;</span><br><span class="line">    <span class="type">int</span> saveMoney;</span><br><span class="line">    <span class="type">int</span> year;</span><br><span class="line">    <span class="type">double</span> Interest;</span><br><span class="line">    <span class="type">double</span> InterestRate;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">ComputerInterest</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> saveMoney*year*Interest;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">SetInterestRate</span><span class="params">(<span class="type">double</span> interest)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.Interest=interest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConstructionBank</span> <span class="keyword">extends</span> <span class="title class_">Bank</span>&#123;</span><br><span class="line">    <span class="type">double</span> year;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConstructionBank</span><span class="params">(<span class="type">int</span> saveMoney,<span class="type">double</span> year,<span class="type">double</span> interest, <span class="type">double</span> interestRate)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.saveMoney=saveMoney;</span><br><span class="line">        <span class="built_in">this</span>.Interest=interest;</span><br><span class="line">        <span class="built_in">this</span>.InterestRate=interestRate;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">computerInterest</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>.year=(<span class="type">int</span>)Math.floor(year);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.ComputerInterest()+saveMoney*<span class="number">1000</span>*(year-Math.floor(year))*InterestRate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChinaBank</span> <span class="keyword">extends</span> <span class="title class_">Bank</span>&#123;</span><br><span class="line">    <span class="type">double</span> year;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ChinaBank</span><span class="params">(<span class="type">int</span> saveMoney, <span class="type">double</span> year, <span class="type">double</span> interest, <span class="type">double</span> interestRate)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.saveMoney=saveMoney;</span><br><span class="line">        <span class="built_in">this</span>.Interest=interest;</span><br><span class="line">        <span class="built_in">this</span>.InterestRate=interestRate;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">computerInterest</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>.year=(<span class="type">int</span>)Math.floor(year);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.ComputerInterest()+saveMoney*<span class="number">1000</span>*(year-Math.floor(year))*InterestRate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="9、公司的雇员"><a href="#9、公司的雇员" class="headerlink" title="9、公司的雇员"></a>9、公司的雇员</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 某公司的雇员分为以下若干类：</span></span><br><span class="line"><span class="comment">//(1) Employee：这是所有员工总的父类。</span></span><br><span class="line"><span class="comment">//① 属性：员工的姓名,员工的生日月份</span></span><br><span class="line"><span class="comment">//② 方法：getSalary(int month) 根据参数月份来确定工资，如果该月员工过生日，则公司会额外奖励100 元。</span></span><br><span class="line"><span class="comment">//(2) SalariedEmployee：Employee 的子类，拿固定工资的员工。</span></span><br><span class="line"><span class="comment">//① 属性：月薪。</span></span><br><span class="line"><span class="comment">//(3)HourlyEmployee：Employee 的子类，按小时拿工资的员工，每月工作超出160小时的部分按照1.5 倍工资发放。</span></span><br><span class="line"><span class="comment">//① 属性：每小时的工资、每月工作的小时数。</span></span><br><span class="line"><span class="comment">//(4) SalesEmployee：Employee 的子类，销售，工资由月销售额和提成率决定。</span></span><br><span class="line"><span class="comment">//① 属性：月销售额、提成率。</span></span><br><span class="line"><span class="comment">//(5) BasePlusSalesEmployee：SalesEmployee 的子类，有固定底薪的销售人员，工资由底薪加上销售提成部分。</span></span><br><span class="line"><span class="comment">//① 属性：底薪、提成。</span></span><br><span class="line"><span class="comment">//要求：</span></span><br><span class="line"><span class="comment">//创建一个Employee 数组，分别创建若干不同的Employee对象放入Employee 数组中，初始化</span></span><br><span class="line"><span class="comment">// 张三为SalariedEmployee类型员工月薪为4000元，生日为5月份；</span></span><br><span class="line"><span class="comment">// 李四为HourlyEmployee类型员工，生日为6月份，每小时工资25元，当月工作了200小时；</span></span><br><span class="line"><span class="comment">// 王五为SalesEmployee类型员工，生日为7月份，底薪为2500，提成为3000，当前要发的是6月份工资，要求打印结果为：</span></span><br><span class="line"><span class="comment">//张三6月份的工资为4000元</span></span><br><span class="line"><span class="comment">//李四6月份的工资为5600元</span></span><br><span class="line"><span class="comment">//王五6月份的工资为5500元。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Employee[] employees=<span class="keyword">new</span> <span class="title class_">Employee</span>[<span class="number">3</span>];</span><br><span class="line">        employees[<span class="number">0</span>]=<span class="keyword">new</span> <span class="title class_">SalariedEmployee</span>(<span class="string">&quot;张三&quot;</span>,<span class="number">5</span>,<span class="number">4000</span>);</span><br><span class="line">        employees[<span class="number">1</span>]=<span class="keyword">new</span> <span class="title class_">HourlyEmployee</span>(<span class="string">&quot;李四&quot;</span>,<span class="number">6</span>,<span class="number">25</span>,<span class="number">200</span>);</span><br><span class="line">        employees[<span class="number">2</span>]=<span class="keyword">new</span> <span class="title class_">BasePlusSalesEmployee</span>(<span class="string">&quot;王五&quot;</span>,<span class="number">7</span>,<span class="number">2500</span>,<span class="number">3000</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%s6月份的工资为%.0f元\n&quot;</span>,employees[i].name,employees[i].getSalary(<span class="number">6</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Employee</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> birth;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">getSalary</span><span class="params">(<span class="type">int</span> month)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SalariedEmployee</span> <span class="keyword">extends</span> <span class="title class_">Employee</span>&#123;</span><br><span class="line">    <span class="type">double</span> Monthly;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SalariedEmployee</span><span class="params">(String name,<span class="type">int</span> birth,<span class="type">double</span> monthly)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name=name;</span><br><span class="line">        <span class="built_in">this</span>.birth=birth;</span><br><span class="line">        Monthly = monthly;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getSalary</span><span class="params">(<span class="type">int</span> month)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (month==birth)</span><br><span class="line">            <span class="keyword">return</span> Monthly+<span class="number">100</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> Monthly;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HourlyEmployee</span> <span class="keyword">extends</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    <span class="type">double</span> Hourly,hour;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HourlyEmployee</span><span class="params">(String name,<span class="type">int</span> birth,<span class="type">double</span> hourly, <span class="type">double</span> hour)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name=name;</span><br><span class="line">        <span class="built_in">this</span>.birth=birth;</span><br><span class="line">        Hourly = hourly;</span><br><span class="line">        <span class="built_in">this</span>.hour = hour;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getSalary</span><span class="params">(<span class="type">int</span> month)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(hour&lt;=<span class="number">160</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(month==birth)</span><br><span class="line">                <span class="keyword">return</span> hour*Hourly+<span class="number">100</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> hour*Hourly;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(month==birth)</span><br><span class="line">                <span class="keyword">return</span> (hour-<span class="number">160</span>)*<span class="number">1.5</span>*Hourly+<span class="number">160</span>*Hourly+<span class="number">100</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> (hour-<span class="number">160</span>)*<span class="number">1.5</span>*Hourly+<span class="number">160</span>*Hourly;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SalesEmployee</span> <span class="keyword">extends</span> <span class="title class_">Employee</span>&#123;</span><br><span class="line">    <span class="type">double</span> MonthlySales,RoyaltyRate;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getSalary</span><span class="params">(<span class="type">int</span> month)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> MonthlySales*RoyaltyRate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BasePlusSalesEmployee</span> <span class="keyword">extends</span> <span class="title class_">SalesEmployee</span>&#123;</span><br><span class="line">    <span class="type">double</span> Monthly,Commission;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BasePlusSalesEmployee</span><span class="params">(String name,<span class="type">int</span> birth,<span class="type">double</span> monthly,<span class="type">double</span> commission)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name=name;</span><br><span class="line">        <span class="built_in">this</span>.birth=birth;</span><br><span class="line">        Monthly=monthly;</span><br><span class="line">        Commission=commission;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getSalary</span><span class="params">(<span class="type">int</span> month)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (month==birth)</span><br><span class="line">            <span class="keyword">return</span> Monthly+Commission+<span class="number">100</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> Monthly+Commission;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="10、控制台输入一个字符串s，请你反转字符串中单词的顺序"><a href="#10、控制台输入一个字符串s，请你反转字符串中单词的顺序" class="headerlink" title="10、控制台输入一个字符串s，请你反转字符串中单词的顺序"></a>10、控制台输入一个字符串s，请你反转字符串中单词的顺序</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span>  <span class="title class_">ReverseStr</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String s;</span><br><span class="line">        <span class="type">String</span> <span class="variable">regex</span> <span class="operator">=</span> <span class="string">&quot;\s+&quot;</span>;</span><br><span class="line">        String[] a;</span><br><span class="line">        Scanner read=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        s=read.nextLine();</span><br><span class="line">        a=s.split(regex);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=a.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%s &quot;</span>,a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="11、产生10个1-100之间的随机整数输出"><a href="#11、产生10个1-100之间的随机整数输出" class="headerlink" title="11、产生10个1-100之间的随机整数输出"></a>11、产生10个1-100之间的随机整数输出</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="comment">//1. 产生10个1-100之间的随机整数输出，</span></span><br><span class="line"><span class="comment">// 并把这10个数按从小到大的顺序输出，程序文件命名为“RandomSort.java”。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RandomSort</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            a[i]= random.nextInt(<span class="number">90</span>)+<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(a);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="12、使用for循环语句计算5-55-555-5555"><a href="#12、使用for循环语句计算5-55-555-5555" class="headerlink" title="12、使用for循环语句计算5+55+555+5555+.."></a>12、使用for循环语句计算5+55+555+5555+..</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2. 编写应用程序，使用for循环语句</span></span><br><span class="line"><span class="comment">// 计算5+55+555+5555+...的前10项之和,程序文件命名为“SequenceSum.java”。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SequenceSum</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">            sum+=(<span class="type">long</span>)((<span class="number">5.0</span>/<span class="number">9.0</span>)*Math.pow(<span class="number">10</span>,i));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;5+55+555+5555+...的前10项之和为&quot;</span>+sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="13、输出满足1-2-3-…-n-10000"><a href="#13、输出满足1-2-3-…-n-10000" class="headerlink" title="13、输出满足1+2+3+…+n&gt;10000"></a>13、输出满足1+2+3+…+n&gt;10000</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3. 编写程序，输出</span></span><br><span class="line"><span class="comment">// 满足1+2+3+...+n&gt;10000的最小正整数n,程序文件命名为“IntegerMin.java”。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IntegerMin</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (sum&lt;<span class="number">10000</span>)&#123;</span><br><span class="line">            sum+=++i;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="14、创建一个桌子（Table）类"><a href="#14、创建一个桌子（Table）类" class="headerlink" title="14、创建一个桌子（Table）类"></a>14、创建一个桌子（Table）类</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> t14;</span><br><span class="line"><span class="comment">//4.编写程序，实现以下功能：</span></span><br><span class="line"><span class="comment">//创建一个桌子（Table）类，该类中有桌子名称（name）</span></span><br><span class="line"><span class="comment">// 重量（weight）、桌面宽度（width）、长度（length）</span></span><br><span class="line"><span class="comment">// 和桌子高度（height）属性以及以下几个方法：</span></span><br><span class="line"><span class="comment">//（1）无参构造方法：默认值初始化所有成员变量；</span></span><br><span class="line"><span class="comment">//（2）有参构造方法：根据参数初始化成员变量；</span></span><br><span class="line"><span class="comment">//（3）area():计算桌面的面积；</span></span><br><span class="line"><span class="comment">//（4）display():在屏幕上输出所有成员变量的值；</span></span><br><span class="line"><span class="comment">//在测试（Test）类的main()方法中实现创建一个桌子对象，</span></span><br><span class="line"><span class="comment">// 计算桌面的面积，改变桌子重量，并在屏幕上输出所有桌子属性的值。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Table table=<span class="keyword">new</span> <span class="title class_">Table</span>();</span><br><span class="line">        System.out.println(table.name+<span class="string">&quot;的桌面面积为&quot;</span>+table.area());</span><br><span class="line">        table.weight=<span class="number">6</span>;</span><br><span class="line">        table.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Table</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">double</span> weight,width,lengeh,height;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Table</span><span class="params">()</span>&#123;</span><br><span class="line">        name = <span class="string">&quot;办公桌&quot;</span>;</span><br><span class="line">        weight = <span class="number">5</span>;</span><br><span class="line">        width = <span class="number">1.5</span>;</span><br><span class="line">        lengeh =<span class="number">1.7</span>;</span><br><span class="line">        height = <span class="number">1.2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Table</span><span class="params">(String name, <span class="type">double</span> weight, <span class="type">double</span> width, <span class="type">double</span> lengeh, <span class="type">double</span> height)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.weight = weight;</span><br><span class="line">        <span class="built_in">this</span>.width = width;</span><br><span class="line">        <span class="built_in">this</span>.lengeh = lengeh;</span><br><span class="line">        <span class="built_in">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">area</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> width*lengeh;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">display</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;桌子名：&quot;</span>+name);</span><br><span class="line">        System.out.println(<span class="string">&quot;桌子的重量：&quot;</span>+weight);</span><br><span class="line">        System.out.println(<span class="string">&quot;桌面宽：&quot;</span>+width);</span><br><span class="line">        System.out.println(<span class="string">&quot;桌面长：&quot;</span>+lengeh);</span><br><span class="line">        System.out.println(<span class="string">&quot;桌子高：&quot;</span>+height);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="15、假定根据学生的3门学位课程的分数决定其是否可以拿到学位"><a href="#15、假定根据学生的3门学位课程的分数决定其是否可以拿到学位" class="headerlink" title="15、假定根据学生的3门学位课程的分数决定其是否可以拿到学位"></a>15、假定根据学生的3门学位课程的分数决定其是否可以拿到学位</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//编写程序，实现以下功能：</span></span><br><span class="line"><span class="comment">//假定根据学生的3门学位课程的分数决定其是否可以拿到学位，</span></span><br><span class="line"><span class="comment">// 对于本科生，如果3门课程的平均分数超过60分即表示通过，</span></span><br><span class="line"><span class="comment">// 而对于研究生，则需要平均超过80分才能够通过。根据上述要求，</span></span><br><span class="line"><span class="comment">// 请完成以下Java类的设计：</span></span><br><span class="line"><span class="comment">//（1）设计一个基类Student描述学生的共同特征。</span></span><br><span class="line"><span class="comment">//（2）设计一个描述本科生的类Undergraduate，该类继承并扩展Student类。</span></span><br><span class="line"><span class="comment">//（3）设计一个描述研究生的类Graduate，该类继承并扩展Student类。</span></span><br><span class="line"><span class="comment">//（4）设计一个测试类StudentText，分别创建本科生和研究生这两个类的对象，</span></span><br><span class="line"><span class="comment">// 并输出相关信息(对应学生的姓名、平均分、是否可以拿到学位)，要求平均分保留2位小数。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentText</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">UnderGraduate</span> <span class="variable">A</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">UnderGraduate</span>(<span class="string">&quot;小明&quot;</span>,<span class="number">99</span>,<span class="number">80</span>,<span class="number">55</span>);</span><br><span class="line">        <span class="type">Graduate</span> <span class="variable">B</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Graduate</span>(<span class="string">&quot;李华&quot;</span>,<span class="number">60</span>,<span class="number">99</span>,<span class="number">86</span>);</span><br><span class="line">        System.out.printf(<span class="string">&quot;本科生%s的平均分为%.2f,他&quot;</span>,A.name,A.getAverage());</span><br><span class="line">        A.isPass();</span><br><span class="line">        System.out.printf(<span class="string">&quot;研究生%s的平均分为%.2f,他&quot;</span>,B.name,B.getAverage());</span><br><span class="line">        B.isPass();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">double</span> courseA,courseB,courseC;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">double</span> courseA, <span class="type">double</span> courseB, <span class="type">double</span> courseC)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.courseA = courseA;</span><br><span class="line">        <span class="built_in">this</span>.courseB = courseB;</span><br><span class="line">        <span class="built_in">this</span>.courseC = courseC;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getAverage</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (courseA+courseB+courseC) /<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UnderGraduate</span> <span class="keyword">extends</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UnderGraduate</span><span class="params">(String name, <span class="type">double</span> courseA, <span class="type">double</span> courseB, <span class="type">double</span> courseC)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name, courseA, courseB, courseC);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">isPass</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>.getAverage()&gt;=<span class="number">60</span>)</span><br><span class="line">            System.out.print(<span class="string">&quot;可以拿到学位\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.print(<span class="string">&quot;不可以拿到学位\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Graduate</span> <span class="keyword">extends</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Graduate</span><span class="params">(String name, <span class="type">double</span> courseA, <span class="type">double</span> courseB, <span class="type">double</span> courseC)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(name, courseA, courseB, courseC);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">isPass</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>.getAverage()&gt;=<span class="number">80</span>)</span><br><span class="line">            System.out.print(<span class="string">&quot;可以拿到学位\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.print(<span class="string">&quot;不可以拿到学位\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="16、设计一个计算柱体应用程序，希望该应用程序可以计算不同柱体的体积"><a href="#16、设计一个计算柱体应用程序，希望该应用程序可以计算不同柱体的体积" class="headerlink" title="16、设计一个计算柱体应用程序，希望该应用程序可以计算不同柱体的体积"></a>16、设计一个计算柱体应用程序，希望该应用程序可以计算不同柱体的体积</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//6.编写程序，实现以下功能：</span></span><br><span class="line"><span class="comment">//设计一个计算柱体应用程序，希望该应用程序可以计算不同柱体的体积，要求如下：</span></span><br><span class="line"><span class="comment">//(1)  首先设计一个抽象类Geometry（几何图形）类，</span></span><br><span class="line"><span class="comment">// 在该抽象类中定义一个抽象getArea()方法.</span></span><br><span class="line"><span class="comment">//(2)  然后设计PillarL（柱体）类，</span></span><br><span class="line"><span class="comment">// 该类的对象调用getVolume()方法计算柱体的体积，</span></span><br><span class="line"><span class="comment">//(3)  分别设计Circle（圆）类和Rectangle（矩形）类</span></span><br><span class="line"><span class="comment">// 和Triangle（三角形）类作为Geometry类的子类。</span></span><br><span class="line"><span class="comment">//(4)  最后设计Application测试类分别求出圆柱的体积，</span></span><br><span class="line"><span class="comment">// 四棱柱的体积，三棱柱的体积。</span></span><br><span class="line"><span class="comment">//提示：三角形的面积可以由海伦公式计算。</span></span><br><span class="line"><span class="comment">//海伦公式：如果一个三角形的三边长为a，b，c，设p=（a+b+c）/2</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Application</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Circle</span> <span class="variable">circle</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Circle</span>(<span class="number">5</span>);</span><br><span class="line">        <span class="type">Rectangle</span> <span class="variable">rectangle</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Rectangle</span>(<span class="number">4</span>,<span class="number">3</span>);</span><br><span class="line">        <span class="type">Triangle</span> <span class="variable">triangle</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Triangle</span>(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">        <span class="type">Pillar</span> <span class="variable">A</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Pillar</span>(circle,<span class="number">5</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;圆柱的体积为：&quot;</span>+A.getVolmume());</span><br><span class="line">        A.bottom=rectangle;</span><br><span class="line">        System.out.println(<span class="string">&quot;四棱柱的体积为：&quot;</span>+A.getVolmume());</span><br><span class="line">        A.bottom=triangle;</span><br><span class="line">        System.out.println(<span class="string">&quot;三棱柱的体积为：&quot;</span>+A.getVolmume());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Pillar</span>&#123;</span><br><span class="line">    Geometry bottom;</span><br><span class="line">    <span class="type">double</span> height;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pillar</span><span class="params">(Geometry bottom, <span class="type">double</span> height)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.bottom = bottom;</span><br><span class="line">        <span class="built_in">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">getVolmume</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bottom.getArea()*height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Geometry</span>&#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> <span class="keyword">extends</span> <span class="title class_">Geometry</span>&#123;</span><br><span class="line">    <span class="type">double</span> r;</span><br><span class="line">    <span class="keyword">final</span> <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.1415926</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Circle</span><span class="params">(<span class="type">double</span> r)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.r = r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> PI*Math.pow(r,<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> <span class="keyword">extends</span> <span class="title class_">Geometry</span> &#123;</span><br><span class="line">    <span class="type">double</span> a,b;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.a = a;</span><br><span class="line">        <span class="built_in">this</span>.b = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a*b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Triangle</span> <span class="keyword">extends</span> <span class="title class_">Geometry</span>&#123;</span><br><span class="line">    <span class="type">double</span> a,b,c;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Triangle</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b, <span class="type">double</span> c)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.a = a;</span><br><span class="line">        <span class="built_in">this</span>.b = b;</span><br><span class="line">        <span class="built_in">this</span>.c = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">double</span> p=(a+b+c)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> Math.sqrt(p*(p-a)*(p-b)*(p-c));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="17、设计一个应用程序，该应用程序用接口实现计算三个数的算术平均数和几何平均数"><a href="#17、设计一个应用程序，该应用程序用接口实现计算三个数的算术平均数和几何平均数" class="headerlink" title="17、设计一个应用程序，该应用程序用接口实现计算三个数的算术平均数和几何平均数"></a>17、设计一个应用程序，该应用程序用接口实现计算三个数的算术平均数和几何平均数</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//7.编写程序，实现以下功能：</span></span><br><span class="line"><span class="comment">//设计一个应用程序，该应用程序用接口实现计算三个数的算术平均数和几何平均数，</span></span><br><span class="line"><span class="comment">// 例如有两个数a,b,c其算术平均数为：（a+b+c）/3;</span></span><br><span class="line"><span class="comment">// 其几何平均数为：\sqrt[3]&#123;a\ast b\ast c&#125;。要求如下：</span></span><br><span class="line"><span class="comment">// 设计一个接口（CompurerAverage），该接口有一个抽象方法average（）</span></span><br><span class="line"><span class="comment">// 要求实现该接口的类完成平均数的计算。</span></span><br><span class="line"><span class="comment">// 设计一个ArithmeticAverage类实现算术平均数的运算。</span></span><br><span class="line"><span class="comment">// 设计一个GeometryAverage类实现几何平均数的运算。</span></span><br><span class="line"><span class="comment">// 设计一个TestAverage测试类完成测试。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestAverage</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ArithmeticAverage</span> <span class="variable">A</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">ArithmeticAverage</span>(<span class="number">3.0</span>,<span class="number">4.0</span>,<span class="number">5.0</span>);</span><br><span class="line">        <span class="type">GeometryAverage</span> <span class="variable">B</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">GeometryAverage</span>(<span class="number">3.0</span>,<span class="number">4.0</span>,<span class="number">5.0</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;3,4,5的算数平均数为&quot;</span>+A.average());</span><br><span class="line">        System.out.println(<span class="string">&quot;3,4,5的几何平均数为&quot;</span>+B.average());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">CompurerAverage</span>&#123;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">average</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ArithmeticAverage</span> <span class="keyword">implements</span> <span class="title class_">CompurerAverage</span>&#123;</span><br><span class="line">    <span class="type">double</span> a,b,c;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ArithmeticAverage</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b, <span class="type">double</span> c)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.a = a;</span><br><span class="line">        <span class="built_in">this</span>.b = b;</span><br><span class="line">        <span class="built_in">this</span>.c = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">average</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (a+b+c)/<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GeometryAverage</span> <span class="keyword">implements</span> <span class="title class_">CompurerAverage</span>&#123;</span><br><span class="line">    <span class="type">double</span> a,b,c;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">GeometryAverage</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b, <span class="type">double</span> c)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.a = a;</span><br><span class="line">        <span class="built_in">this</span>.b = b;</span><br><span class="line">        <span class="built_in">this</span>.c = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">average</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.pow(a*b*c,<span class="number">1.0</span>/<span class="number">3.0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="18、使用Scanner类的实例解析字符串"><a href="#18、使用Scanner类的实例解析字符串" class="headerlink" title="18、使用Scanner类的实例解析字符串"></a>18、使用Scanner类的实例解析字符串</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="comment">//8. 编写程序，实现以下功能：</span></span><br><span class="line"><span class="comment">//使用Scanner类的实例解析字符串</span></span><br><span class="line"><span class="comment">// “欢迎光临美好生活超市,你所买的苹果20.5元，梨20元,铅笔5.8元，香蕉30.5元，矿泉水20.8元。”</span></span><br><span class="line"><span class="comment">// 中的金额，并计算出此次在超市中花费的总额。要求如下：</span></span><br><span class="line"><span class="comment">//（1）设计一个givePriceSum类用于解析字符串中的金额。</span></span><br><span class="line"><span class="comment">//（2）设计一个PriceSumTest测试类测试结果。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PriceSumTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">cost</span> <span class="operator">=</span> <span class="string">&quot;欢迎光临美好生活超市,你所买的苹果20.5元，梨20元,铅笔5.8元，香蕉30.5元，矿泉水20.8元。&quot;</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">priceSum</span> <span class="operator">=</span> GetPrice.givePriceSum(cost);</span><br><span class="line">        System.out.printf(<span class="string">&quot;%s\n你此次花费的金额为:%.2f元\n&quot;</span>,cost,priceSum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetPrice</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">givePriceSum</span><span class="params">(String cost)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(cost);</span><br><span class="line">        scanner.useDelimiter(<span class="string">&quot;[^0-9.]+&quot;</span>); <span class="comment">//scanner设置分隔标记</span></span><br><span class="line">        <span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(scanner.hasNext())&#123;</span><br><span class="line">            <span class="keyword">try</span>&#123;  <span class="type">double</span> <span class="variable">price</span> <span class="operator">=</span> scanner.nextDouble();</span><br><span class="line">                sum = sum+price;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span>(InputMismatchException exp)&#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">t</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="19、使用文件字符输入和输出流将文件source-File中的内容加到文件target-File中"><a href="#19、使用文件字符输入和输出流将文件source-File中的内容加到文件target-File中" class="headerlink" title="19、使用文件字符输入和输出流将文件source File中的内容加到文件target File中"></a>19、使用文件字符输入和输出流将文件source File中的内容加到文件target File中</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">      <span class="type">File</span> <span class="variable">sourceFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:\\myjavafile\\myProject\\myfile\\a.txt&quot;</span>);  <span class="comment">//读取的文件</span></span><br><span class="line">      <span class="type">File</span> <span class="variable">targetFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:\\myjavafile\\myProject\\myfile\\b.txt&quot;</span>);  <span class="comment">//写入的文件</span></span><br><span class="line">      <span class="type">char</span> c[] =<span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">19</span>];               <span class="comment">//char型数组 </span></span><br><span class="line">      <span class="keyword">try</span>&#123;  </span><br><span class="line">         <span class="type">Writer</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(targetFile,<span class="literal">true</span>); <span class="comment">//指向目的地的输出流</span></span><br><span class="line">         <span class="type">Reader</span> <span class="variable">in</span>  <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(sourceFile);   <span class="comment">//指向源的输入流  </span></span><br><span class="line">         <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">         <span class="keyword">while</span>((n=in.read(c))!=-<span class="number">1</span>) &#123;</span><br><span class="line">             out.write(c,<span class="number">0</span>,n);</span><br><span class="line">         &#125;</span><br><span class="line">         out.flush();</span><br><span class="line">         out.close();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span>(IOException e) &#123;</span><br><span class="line">          System.out.println(<span class="string">&quot;Error &quot;</span>+e);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="20、输入一行字符串，分别统计出其中英文字母、空格、数"><a href="#20、输入一行字符串，分别统计出其中英文字母、空格、数" class="headerlink" title="20、输入一行字符串，分别统计出其中英文字母、空格、数"></a>20、输入一行字符串，分别统计出其中英文字母、空格、数</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="comment">//编程实现输入一行字符串，分别统计出其中</span></span><br><span class="line"><span class="comment">// 英文字母、空格、数字和其它字符的个数。程序文件命名为“Counter.java”。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> zm=<span class="number">0</span>,kg=<span class="number">0</span>,sz=<span class="number">0</span>,qt=<span class="number">0</span>;</span><br><span class="line">        Scanner read=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> read.nextLine();</span><br><span class="line">        <span class="type">char</span>[] a =s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;a.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> ((a[i]&gt;=<span class="string">&#x27;a&#x27;</span>&amp;&amp;a[i]&lt;=<span class="string">&#x27;z&#x27;</span>)||(a[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; a[i]&lt;=<span class="string">&#x27;Z&#x27;</span>))    zm++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (a[i]&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; a[i]&lt;=<span class="string">&#x27;9&#x27;</span>)   sz++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (a[i]==<span class="string">&#x27; &#x27;</span>)  kg++;</span><br><span class="line">            <span class="keyword">else</span>  qt++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;字符串[&quot;</span>+s+<span class="string">&quot;]中&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;字母有&quot;</span>+zm+<span class="string">&quot;个&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;数字有&quot;</span>+sz+<span class="string">&quot;个&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;空格有&quot;</span>+kg+<span class="string">&quot;个&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;其他字符有&quot;</span>+qt+<span class="string">&quot;个&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> Java编程初学记录</li>
+        <li><strong>作者:</strong> Fenz Han</li>
+        <li><strong>创建于
+                :</strong> 2025-10-12 20:15:08</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-03-01 13:17:30
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://fengze-han.github.io/project/post/bc1e1635eee9/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Java/">#Java</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E7%BC%96%E7%A8%8B%E7%BB%83%E4%B9%A0/">#编程练习</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">#基础语法</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/">#算法入门</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/post/b1a311a07893/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">C语言编程小细节(1)</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/post/884250281efe/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">【解决办法】树莓派系统使用PIP安装ultralytics失败</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">Java编程初学记录</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E5%88%9D%E5%AD%A6Java%E6%97%B6%E7%BB%83%E4%B9%A0%E8%BF%87%E7%9A%84%E9%A2%98%E7%9B%AE"><span class="nav-text">记录初学Java时练习过的题目~</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%811-2-%E2%80%A6-10-%E7%9A%84%E5%80%BC"><span class="nav-text">1、1!+2!+…+10!的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81-%E8%BE%93%E5%87%BA%E4%BB%8E100-200-%E4%B9%8B%E9%97%B4%EF%BC%88%E5%8C%85%E6%8B%AC100%E5%92%8C200%EF%BC%89%E7%9A%84%E6%89%80%E6%9C%89%E8%B4%A8%E6%95%B0"><span class="nav-text">2、 输出从100-200 之间（包括100和200）的所有质数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B1%82100-999%E4%B9%8B%E9%97%B4%E7%9A%84%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0"><span class="nav-text">3 求100-999之间的水仙花数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E3%80%81%E8%BE%93%E5%87%BA1949%E5%B9%B4-2023%E5%B9%B4%E5%86%85%E7%9A%84%E9%97%B0%E5%B9%B4"><span class="nav-text">4 、输出1949年-2023年内的闰年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E2%80%9C%E5%8A%A8%E7%89%A9%E2%80%9D%E7%B1%BB"><span class="nav-text">5、“动物”类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E5%BD%A2%E7%8A%B6%E7%9A%84%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-text">6、形状的抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E3%80%81%E5%A3%B0%E9%9F%B3%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="nav-text">7 、声音模拟器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81%E9%93%B6%E8%A1%8CBank"><span class="nav-text">8、银行Bank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81%E5%85%AC%E5%8F%B8%E7%9A%84%E9%9B%87%E5%91%98"><span class="nav-text">9、公司的雇员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10%E3%80%81%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2s%EF%BC%8C%E8%AF%B7%E4%BD%A0%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%8D%95%E8%AF%8D%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="nav-text">10、控制台输入一个字符串s，请你反转字符串中单词的顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11%E3%80%81%E4%BA%A7%E7%94%9F10%E4%B8%AA1-100%E4%B9%8B%E9%97%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B4%E6%95%B0%E8%BE%93%E5%87%BA"><span class="nav-text">11、产生10个1-100之间的随机整数输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12%E3%80%81%E4%BD%BF%E7%94%A8for%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E8%AE%A1%E7%AE%975-55-555-5555"><span class="nav-text">12、使用for循环语句计算5+55+555+5555+..</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13%E3%80%81%E8%BE%93%E5%87%BA%E6%BB%A1%E8%B6%B31-2-3-%E2%80%A6-n-10000"><span class="nav-text">13、输出满足1+2+3+…+n&gt;10000</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%A1%8C%E5%AD%90%EF%BC%88Table%EF%BC%89%E7%B1%BB"><span class="nav-text">14、创建一个桌子（Table）类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15%E3%80%81%E5%81%87%E5%AE%9A%E6%A0%B9%E6%8D%AE%E5%AD%A6%E7%94%9F%E7%9A%843%E9%97%A8%E5%AD%A6%E4%BD%8D%E8%AF%BE%E7%A8%8B%E7%9A%84%E5%88%86%E6%95%B0%E5%86%B3%E5%AE%9A%E5%85%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E6%8B%BF%E5%88%B0%E5%AD%A6%E4%BD%8D"><span class="nav-text">15、假定根据学生的3门学位课程的分数决定其是否可以拿到学位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16%E3%80%81%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E8%AE%A1%E7%AE%97%E6%9F%B1%E4%BD%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%B8%8C%E6%9C%9B%E8%AF%A5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%8F%AF%E4%BB%A5%E8%AE%A1%E7%AE%97%E4%B8%8D%E5%90%8C%E6%9F%B1%E4%BD%93%E7%9A%84%E4%BD%93%E7%A7%AF"><span class="nav-text">16、设计一个计算柱体应用程序，希望该应用程序可以计算不同柱体的体积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17%E3%80%81%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%EF%BC%8C%E8%AF%A5%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%94%A8%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E4%B8%89%E4%B8%AA%E6%95%B0%E7%9A%84%E7%AE%97%E6%9C%AF%E5%B9%B3%E5%9D%87%E6%95%B0%E5%92%8C%E5%87%A0%E4%BD%95%E5%B9%B3%E5%9D%87%E6%95%B0"><span class="nav-text">17、设计一个应用程序，该应用程序用接口实现计算三个数的算术平均数和几何平均数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18%E3%80%81%E4%BD%BF%E7%94%A8Scanner%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%90%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">18、使用Scanner类的实例解析字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E6%B5%81%E5%B0%86%E6%96%87%E4%BB%B6source-File%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E5%8A%A0%E5%88%B0%E6%96%87%E4%BB%B6target-File%E4%B8%AD"><span class="nav-text">19、使用文件字符输入和输出流将文件source File中的内容加到文件target File中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20%E3%80%81%E8%BE%93%E5%85%A5%E4%B8%80%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%88%86%E5%88%AB%E7%BB%9F%E8%AE%A1%E5%87%BA%E5%85%B6%E4%B8%AD%E8%8B%B1%E6%96%87%E5%AD%97%E6%AF%8D%E3%80%81%E7%A9%BA%E6%A0%BC%E3%80%81%E6%95%B0"><span class="nav-text">20、输入一行字符串，分别统计出其中英文字母、空格、数</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Fenz Han</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 25 篇文章
+                    </span>
+                    
+                        <span>
+                            共 56.5k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+    
+        
+<script src="/js/build/libs/mermaid.min.js"></script>
+
+    
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

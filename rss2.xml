@@ -41,5 +41,805 @@
       
     </item>
     
+    <item>
+      <title>小米/红米纯手机端免解锁 ROOT 教程（KernelSU + LSPosed）</title>
+      <link>https://fengze-han.github.io/post/6b848dfbc923/</link>
+      <guid>https://fengze-han.github.io/post/6b848dfbc923/</guid>
+      <pubDate>Fri, 13 Mar 2026 05:30:47 GMT</pubDate>
+      
+      <description>小米/红米纯手机端免解锁ROOT教程，无需电脑，仅使用两部手机即可完成KernelSU激活与LSPosed安装，适用于骁龙8 Gen2及以上机型。</description>
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/Android/">Android</category>
+      
+      <category domain="https://fengze-han.github.io/categories/Android/%E6%90%9E%E6%9C%BA%E6%95%99%E7%A8%8B/">搞机教程</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Android/">Android</category>
+      
+      <category domain="https://fengze-han.github.io/tags/ROOT/">ROOT</category>
+      
+      <category domain="https://fengze-han.github.io/tags/KernelSU/">KernelSU</category>
+      
+      <category domain="https://fengze-han.github.io/tags/LSPosed/">LSPosed</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%B0%8F%E7%B1%B3/">小米</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%BA%A2%E7%B1%B3/">红米</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/6b848dfbc923/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>学习总结｜硬件学习入门全路径</title>
+      <link>https://fengze-han.github.io/post/712aa5355cb6/</link>
+      <guid>https://fengze-han.github.io/post/712aa5355cb6/</guid>
+      <pubDate>Sun, 01 Mar 2026 03:39:56 GMT</pubDate>
+      
+      <description>新人硬件入门常陷入“理论啃不透、实操乱试错”的怪圈。这篇总结梳理了硬件学习的四大核心路径——工具、技能、选型与项目实操，帮你从小白快速过渡到能独立做项目的工程师。</description>
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/">硬件开发</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/">硬件开发</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF/">电子电路</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</category>
+      
+      <category domain="https://fengze-han.github.io/tags/PCB/">PCB</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/712aa5355cb6/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>从零开始在 Windows 11 上自托管 Judge0</title>
+      <link>https://fengze-han.github.io/post/6fac9bff0a8b/</link>
+      <guid>https://fengze-han.github.io/post/6fac9bff0a8b/</guid>
+      <pubDate>Sun, 18 Jan 2026 02:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;当我决定自托管 Judge0</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Judge0/">Judge0</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Docker/">Docker</category>
+      
+      <category domain="https://fengze-han.github.io/tags/WSL/">WSL</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E8%87%AA%E6%89%98%E7%AE%A1/">自托管</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/6fac9bff0a8b/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Hydro系统(OJ)维护小指南</title>
+      <link>https://fengze-han.github.io/post/6f2cfc6b5bf8/</link>
+      <guid>https://fengze-han.github.io/post/6f2cfc6b5bf8/</guid>
+      <pubDate>Wed, 07 Jan 2026 12:10:43 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;快速操作索引&quot;&gt;&lt;a href=&quot;#快速操作索引&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E8%BF%90%E7%BB%B4-%E9%83%A8%E7%BD%B2/">运维/部署</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Hydro/">Hydro</category>
+      
+      <category domain="https://fengze-han.github.io/tags/OJ/">OJ</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://fengze-han.github.io/tags/PM2/">PM2</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/6f2cfc6b5bf8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>排序算法</title>
+      <link>https://fengze-han.github.io/post/67d6da0edb8b/</link>
+      <guid>https://fengze-han.github.io/post/67d6da0edb8b/</guid>
+      <pubDate>Sat, 29 Nov 2025 06:12:33 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%AE%97%E6%B3%95%E7%BB%BC%E8%BF%B0/">算法综述</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA/">算法理论</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/67d6da0edb8b/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>冒泡排序(Bubble Sort)</title>
+      <link>https://fengze-han.github.io/post/36950eeb1d14/</link>
+      <guid>https://fengze-han.github.io/post/36950eeb1d14/</guid>
+      <pubDate>Sat, 29 Nov 2025 06:08:07 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;strong&gt;冒泡排序&lt;/strong&gt;（英语：Bubble Sort，又称&lt;strong&gt;泡式排序&lt;/strong&gt;）是一种简单的&lt;a class=&quot;link&quot;  </description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">冒泡排序</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/">多语言实现</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/36950eeb1d14/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Hexo修改默认文章URL的几种方式</title>
+      <link>https://fengze-han.github.io/post/57dc08ca76b3/</link>
+      <guid>https://fengze-han.github.io/post/57dc08ca76b3/</guid>
+      <pubDate>Thu, 30 Oct 2025 13:35:35 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;在使用 Hexo 搭建博客时，文章的 URL 默认是根据日期与文件名生成的，例如：&lt;/p&gt;
+&lt;div class=&quot;code-container&quot; data-rel=&quot;Plaintext&quot;&gt;&lt;figure class=&quot;iseeu highlight</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/">工具/效率</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/">博客优化</category>
+      
+      <category domain="https://fengze-han.github.io/tags/SEO/">SEO</category>
+      
+      <category domain="https://fengze-han.github.io/tags/URL%E9%85%8D%E7%BD%AE/">URL配置</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/57dc08ca76b3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>单链表(Singly Linked List)的完整实现与详解~</title>
+      <link>https://fengze-han.github.io/post/b4e48abf0629/</link>
+      <guid>https://fengze-han.github.io/post/b4e48abf0629/</guid>
+      <pubDate>Fri, 24 Oct 2025 09:53:24 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/C/">C++</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/">单链表</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E9%93%BE%E8%A1%A8/">链表</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/b4e48abf0629/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>顺序表（Sequential List）的完整实现与详解~</title>
+      <link>https://fengze-han.github.io/post/8cfd498ba3aa/</link>
+      <guid>https://fengze-han.github.io/post/8cfd498ba3aa/</guid>
+      <pubDate>Fri, 24 Oct 2025 09:40:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;一、引言&quot;&gt;&lt;a href=&quot;#一、引言&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/C/">C++</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/">顺序表</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">线性表</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/8cfd498ba3aa/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>数据结构英文术语对照</title>
+      <link>https://fengze-han.github.io/post/75d7e568e3f3/</link>
+      <guid>https://fengze-han.github.io/post/75d7e568e3f3/</guid>
+      <pubDate>Fri, 24 Oct 2025 09:34:08 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;概述-Overview&quot;&gt;&lt;a href=&quot;#概述-Overview&quot; class=&quot;headerlink&quot; title=&quot;概述 (Overview)&quot;&gt;&lt;/a&gt;概述 (Overview)&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;数据结构&lt;/strong&gt; -</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E8%8B%B1%E8%AF%AD/">英语</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%9C%AF%E8%AF%AD/">术语</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%8B%B1%E8%AF%AD/">计算机英语</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/75d7e568e3f3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>HTTP状态码详解</title>
+      <link>https://fengze-han.github.io/post/541d0581191b/</link>
+      <guid>https://fengze-han.github.io/post/541d0581191b/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:33:25 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;HTTP 状态码是服务器在响应客户端请求时返回的三位数字代码，用于快速传达请求的处理结果。它们遵循 RFC 规范，是 Web 通信和</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/HTTP/">HTTP</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%8A%B6%E6%80%81%E7%A0%81/">状态码</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Web%E5%BC%80%E5%8F%91/">Web开发</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/541d0581191b/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>HTTP状态码速查</title>
+      <link>https://fengze-han.github.io/post/4c071179225a/</link>
+      <guid>https://fengze-han.github.io/post/4c071179225a/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:29:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div class=&quot;callout callout--titled blue mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/HTTP/">HTTP</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%8A%B6%E6%80%81%E7%A0%81/">状态码</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/">速查表</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/4c071179225a/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>JavaScript 正则表达式速查表</title>
+      <link>https://fengze-han.github.io/post/7140b31adb2c/</link>
+      <guid>https://fengze-han.github.io/post/7140b31adb2c/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:23:03 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;正则表达式速查表&quot;&gt;&lt;a href=&quot;#正则表达式速查表&quot; class=&quot;headerlink&quot; title=&quot;正则表达式速查表&quot;&gt;&lt;/a&gt;正则表达式速查表&lt;/h1&gt;&lt;p&gt;JavaScript 正则表达式速查表&lt;/p&gt;
+&lt;h3 id=&quot;普通字符&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/">速查表</category>
+      
+      <category domain="https://fengze-han.github.io/tags/JavaScript/">JavaScript</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/7140b31adb2c/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Git命令备忘录</title>
+      <link>https://fengze-han.github.io/post/ba4a4adeb898/</link>
+      <guid>https://fengze-han.github.io/post/ba4a4adeb898/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:04:39 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;Git 是一种分布式版本控制系统。借助此备忘单，您可以快速查阅最常用的 Git 命令。&lt;/p&gt;
+&lt;h3 id=&quot;🛠️-配置设置&quot;&gt;&lt;a href=&quot;#🛠️-配置设置&quot; class=&quot;headerlink&quot; title=&quot;🛠️ 配置设置&quot;&gt;&lt;/a&gt;🛠️</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/">工具/效率</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Git/">Git</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/">命令行</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/ba4a4adeb898/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>OEC/OEC-T实现精确稳定自动挂载硬盘——避免检测不到硬盘无法启动问题</title>
+      <link>https://fengze-han.github.io/post/22d5a1e8e685/</link>
+      <guid>https://fengze-han.github.io/post/22d5a1e8e685/</guid>
+      <pubDate>Sun, 19 Oct 2025 10:22:36 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;在 Armbian 系统中，挂载硬盘是一个常见操作。但传统的挂载方式（如直接修改 &lt;code&gt;/etc/fstab&lt;/code&gt; 文件）存在一定风险：一旦硬盘无法正常挂载，可能导致系统无法启动。本文介绍一种更安全、更稳定的挂载方式：&lt;strong&gt;使用 UUID 和</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E8%BF%90%E7%BB%B4-%E9%83%A8%E7%BD%B2/">运维/部署</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/">磁盘管理</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Armbian/">Armbian</category>
+      
+      <category domain="https://fengze-han.github.io/tags/systemd/">systemd</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/22d5a1e8e685/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>MathJax-LaTeX公式</title>
+      <link>https://fengze-han.github.io/post/5cd4783e4f9d/</link>
+      <guid>https://fengze-han.github.io/post/5cd4783e4f9d/</guid>
+      <pubDate>Thu, 16 Oct 2025 02:02:07 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;希腊字母&quot;&gt;&lt;a href=&quot;#希腊字母&quot; class=&quot;headerlink&quot; title=&quot;希腊字母&quot;&gt;&lt;/a&gt;希腊字母&lt;/h2&gt;&lt;p&gt;小写字母：&lt;br&gt;&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E5%B7%A5%E5%85%B7-%E6%95%88%E7%8E%87/">工具/效率</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/LaTeX/">LaTeX</category>
+      
+      <category domain="https://fengze-han.github.io/tags/MathJax/">MathJax</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">数学公式</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Markdown/">Markdown</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/5cd4783e4f9d/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>我的第一个GitHub仓库</title>
+      <link>https://fengze-han.github.io/post/5dc0d36dabb2/</link>
+      <guid>https://fengze-han.github.io/post/5dc0d36dabb2/</guid>
+      <pubDate>Sun, 12 Oct 2025 12:50:04 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;Code-Circus-🎪&quot;&gt;&lt;a href=&quot;#Code-Circus-🎪&quot; class=&quot;headerlink&quot; title=&quot;Code Circus 🎪&quot;&gt;&lt;/a&gt;Code Circus 🎪&lt;/h1&gt;&lt;p&gt;我的代码马戏团 -</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E6%9D%82%E9%A1%B9/">杂项</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/GitHub/">GitHub</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%BC%80%E6%BA%90/">开源</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%BC%96%E7%A8%8B%E8%B5%84%E6%BA%90/">编程资源</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/5dc0d36dabb2/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>第十四届蓝桥杯第二期模拟赛题解</title>
+      <link>https://fengze-han.github.io/post/e54e901663c0/</link>
+      <guid>https://fengze-han.github.io/post/e54e901663c0/</guid>
+      <pubDate>Sun, 12 Oct 2025 12:35:17 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;第十四届蓝桥杯第二期模拟赛题解&quot;&gt;&lt;a href=&quot;#第十四届蓝桥杯第二期模拟赛题解&quot; class=&quot;headerlink&quot; title=&quot;第十四届蓝桥杯第二期模拟赛题解&quot;&gt;&lt;/a&gt;第十四届蓝桥杯第二期模拟赛题解&lt;/h1&gt;&lt;h2 id=&quot;A题-填空题&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/C/">C++</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/">算法题解</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%AB%9E%E8%B5%9B/">竞赛</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/e54e901663c0/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Python的100个代码示例</title>
+      <link>https://fengze-han.github.io/post/40b2c156a1be/</link>
+      <guid>https://fengze-han.github.io/post/40b2c156a1be/</guid>
+      <pubDate>Sun, 12 Oct 2025 12:25:33 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;1-生成6位数字随机验证码&quot;&gt;&lt;a href=&quot;#1-生成6位数字随机验证码&quot; class=&quot;headerlink&quot; title=&quot;1. 生成6位数字随机验证码&quot;&gt;&lt;/a&gt;1. 生成6位数字随机验证码&lt;/h2&gt;&lt;div</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/Python/">Python</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Python/">Python</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/">代码示例</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%AE%9E%E7%94%A8%E8%84%9A%E6%9C%AC/">实用脚本</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Django/">Django</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/40b2c156a1be/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>C语言编程小细节(1)</title>
+      <link>https://fengze-han.github.io/post/b1a311a07893/</link>
+      <guid>https://fengze-han.github.io/post/b1a311a07893/</guid>
+      <pubDate>Sun, 12 Oct 2025 12:18:47 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;C语言中关于”0”的细节&quot;&gt;&lt;a href=&quot;#C语言中关于”0”的细节&quot; class=&quot;headerlink&quot; title=&quot;C语言中关于”0”的细节&quot;&gt;&lt;/a&gt;C语言中关于”0”的细节&lt;/h2&gt;&lt;h3 id=&quot;‘-0’-，‘0’，-“0”-之间的区别&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/C-C/">C/C++</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/C%E8%AF%AD%E8%A8%80/">C语言</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</category>
+      
+      <category domain="https://fengze-han.github.io/tags/ASCII/">ASCII</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%AD%97%E7%AC%A6%E5%A4%84%E7%90%86/">字符处理</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/b1a311a07893/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java编程初学记录</title>
+      <link>https://fengze-han.github.io/post/bc1e1635eee9/</link>
+      <guid>https://fengze-han.github.io/post/bc1e1635eee9/</guid>
+      <pubDate>Sun, 12 Oct 2025 12:15:08 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;记录初学Java时练习过的题目&quot;&gt;&lt;a href=&quot;#记录初学Java时练习过的题目&quot; class=&quot;headerlink&quot; title=&quot;记录初学Java时练习过的题目~&quot;&gt;&lt;/a&gt;记录初学Java时练习过的题目~&lt;/h2&gt;&lt;h3</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%BC%96%E7%A8%8B%E7%BB%83%E4%B9%A0/">编程练习</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/">算法入门</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/bc1e1635eee9/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>【解决办法】树莓派系统使用PIP安装ultralytics失败</title>
+      <link>https://fengze-han.github.io/post/884250281efe/</link>
+      <guid>https://fengze-han.github.io/post/884250281efe/</guid>
+      <pubDate>Thu, 09 Oct 2025 13:55:33 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;树莓派系统使用PIP安装ultralytics失败，解决办法：虚拟环境&quot;&gt;&lt;a href=&quot;#树莓派系统使用PIP安装ultralytics失败，解决办法：虚拟环境&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Python/">Python</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</category>
+      
+      <category domain="https://fengze-han.github.io/tags/pip/">pip</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/">错误解决</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/884250281efe/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>YOLOv10原理浅学</title>
+      <link>https://fengze-han.github.io/post/851beee9ed98/</link>
+      <guid>https://fengze-han.github.io/post/851beee9ed98/</guid>
+      <pubDate>Thu, 09 Oct 2025 13:36:32 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;神经网络&quot;&gt;&lt;a href=&quot;#神经网络&quot; class=&quot;headerlink&quot; title=&quot;神经网络&quot;&gt;&lt;/a&gt;神经网络&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/YOLOv10/">YOLOv10</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/">深度学习理论</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/851beee9ed98/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>YOLOv10初见</title>
+      <link>https://fengze-han.github.io/post/1d8e075e4717/</link>
+      <guid>https://fengze-han.github.io/post/1d8e075e4717/</guid>
+      <pubDate>Thu, 09 Oct 2025 13:20:32 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/YOLOv10/">YOLOv10</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/1d8e075e4717/#disqus_thread</comments>
+      
+    </item>
+    
   </channel>
 </rss>
