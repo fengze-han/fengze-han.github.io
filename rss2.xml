@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Fenz Han</title>
+    <link>https://fengze-han.github.io/</link>
+    
+    <image>
+      <url>https://fengze-han.github.io/images/logomain.png</url>
+      <title>Fenz Han</title>
+      <link>https://fengze-han.github.io/</link>
+    </image>
+    
+    <atom:link href="https://fengze-han.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description></description>
+    <pubDate>Mon, 06 Apr 2026 11:47:09 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://fengze-han.github.io/post/a01243bec9a1/</link>
+      <guid>https://fengze-han.github.io/post/a01243bec9a1/</guid>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;Welcome to &lt;a class=&quot;link&quot;   href=&quot;https://hexo.io/&quot; &gt;Hexo&lt;i class=&quot;fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top</description>
+          
+        
+      
+      
+      
+      
+      
+      
+      <comments>https://fengze-han.github.io/post/a01243bec9a1/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
