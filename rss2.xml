@@ -15,31 +15,8 @@
     <atom:link href="https://fengze-han.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 06 Apr 2026 11:47:09 GMT</pubDate>
+    <pubDate>Fri, 13 Mar 2026 05:30:47 GMT</pubDate>
     <generator>http://hexo.io/</generator>
-    
-    <item>
-      <title>Hello World</title>
-      <link>https://fengze-han.github.io/post/35b24f8b236b/</link>
-      <guid>https://fengze-han.github.io/post/35b24f8b236b/</guid>
-      <pubDate>Mon, 06 Apr 2026 11:48:08 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;Welcome to &lt;a class=&quot;link&quot;   href=&quot;https://hexo.io/&quot; &gt;Hexo&lt;i class=&quot;fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top</description>
-          
-        
-      
-      
-      
-      
-      
-      
-      <comments>https://fengze-han.github.io/post/35b24f8b236b/#disqus_thread</comments>
-      
-    </item>
     
     <item>
       <title>小米/红米纯手机端免解锁 ROOT 教程（KernelSU + LSPosed）</title>
@@ -762,9 +739,9 @@
       
       <category domain="https://fengze-han.github.io/tags/Linux/">Linux</category>
       
-      <category domain="https://fengze-han.github.io/tags/Python/">Python</category>
-      
       <category domain="https://fengze-han.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</category>
+      
+      <category domain="https://fengze-han.github.io/tags/Python/">Python</category>
       
       <category domain="https://fengze-han.github.io/tags/pip/">pip</category>
       
