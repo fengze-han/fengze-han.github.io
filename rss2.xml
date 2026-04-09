@@ -15,8 +15,35 @@
     <atom:link href="https://fengze-han.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 13 Mar 2026 05:30:47 GMT</pubDate>
+    <pubDate>Thu, 09 Apr 2026 14:58:49 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>在WSL环境中快捷使用 Git 文件比较操作详解</title>
+      <link>https://fengze-han.github.io/post/dd95e1f93a06/</link>
+      <guid>https://fengze-han.github.io/post/dd95e1f93a06/</guid>
+      <pubDate>Thu, 09 Apr 2026 04:00:00 GMT</pubDate>
+      
+      <description>很多开发者只知道 git diff 基础用法，却不熟悉参数、对比范围与可视化工具。本文系统梳理 Git 文件比较的完整操作流程，从基础对比到高级排查，让你在代码版本管理中更高效、更精准。</description>
+      
+      
+      
+      
+      <category domain="https://fengze-han.github.io/categories/Git/">Git</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/Git/">Git</category>
+      
+      <category domain="https://fengze-han.github.io/tags/git-diff/">git diff</category>
+      
+      <category domain="https://fengze-han.github.io/tags/git-difftool/">git difftool</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">代码管理</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/dd95e1f93a06/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>小米/红米纯手机端免解锁 ROOT 教程（KernelSU + LSPosed）</title>
