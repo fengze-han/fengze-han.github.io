@@ -6,7 +6,7 @@
   <link href="https://fengze-han.github.io/atom.xml" rel="self"/>
   
   <link href="https://fengze-han.github.io/"/>
-  <updated>2026-04-09T14:48:55.231Z</updated>
+  <updated>2026-03-13T05:30:47.000Z</updated>
   <id>https://fengze-han.github.io/</id>
   
   <author>
@@ -15,37 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Git 文件比较操作详解</title>
-    <link href="https://fengze-han.github.io/post/dd95e1f93a06/"/>
-    <id>https://fengze-han.github.io/post/dd95e1f93a06/</id>
-    <published>2026-04-09T04:00:00.000Z</published>
-    <updated>2026-04-09T14:48:55.231Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在日常开发中，Git 文件比较是高频操作——无论是核对分支间的代码差异、查看提交修改内容，还是排查问题，都离不开 &lt;code&gt;git diff&lt;/code&gt; 和 &lt;code&gt;git difftool&lt;/code&gt; 两个核心命令。本文结合实际开发踩坑案例，通俗讲解 Git</summary>
-        
-      
-    
-    
-    
-    <category term="Git" scheme="https://fengze-han.github.io/categories/Git/"/>
-    
-    
-    <category term="Git" scheme="https://fengze-han.github.io/tags/Git/"/>
-    
-    <category term="git diff" scheme="https://fengze-han.github.io/tags/git-diff/"/>
-    
-    <category term="git difftool" scheme="https://fengze-han.github.io/tags/git-difftool/"/>
-    
-    <category term="代码管理" scheme="https://fengze-han.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
   
   <entry>
     <title>小米/红米纯手机端免解锁 ROOT 教程（KernelSU + LSPosed）</title>
@@ -93,6 +62,8 @@
     <category term="硬件开发" scheme="https://fengze-han.github.io/categories/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     
+    <category term="学习路线" scheme="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    
     <category term="硬件开发" scheme="https://fengze-han.github.io/tags/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
     <category term="电子电路" scheme="https://fengze-han.github.io/tags/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF/"/>
@@ -100,8 +71,6 @@
     <category term="单片机" scheme="https://fengze-han.github.io/tags/%E5%8D%95%E7%89%87%E6%9C%BA/"/>
     
     <category term="PCB" scheme="https://fengze-han.github.io/tags/PCB/"/>
-    
-    <category term="学习路线" scheme="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
     
   </entry>
   
@@ -568,9 +537,9 @@
     <category term="杂项" scheme="https://fengze-han.github.io/categories/%E6%9D%82%E9%A1%B9/"/>
     
     
-    <category term="学习路线" scheme="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
-    
     <category term="GitHub" scheme="https://fengze-han.github.io/tags/GitHub/"/>
+    
+    <category term="学习路线" scheme="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
     
     <category term="开源" scheme="https://fengze-han.github.io/tags/%E5%BC%80%E6%BA%90/"/>
     

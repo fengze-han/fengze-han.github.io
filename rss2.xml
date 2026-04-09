@@ -15,41 +15,8 @@
     <atom:link href="https://fengze-han.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 09 Apr 2026 14:48:55 GMT</pubDate>
+    <pubDate>Fri, 13 Mar 2026 05:30:47 GMT</pubDate>
     <generator>http://hexo.io/</generator>
-    
-    <item>
-      <title>Git 文件比较操作详解</title>
-      <link>https://fengze-han.github.io/post/dd95e1f93a06/</link>
-      <guid>https://fengze-han.github.io/post/dd95e1f93a06/</guid>
-      <pubDate>Thu, 09 Apr 2026 04:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;在日常开发中，Git 文件比较是高频操作——无论是核对分支间的代码差异、查看提交修改内容，还是排查问题，都离不开 &lt;code&gt;git diff&lt;/code&gt; 和 &lt;code&gt;git difftool&lt;/code&gt; 两个核心命令。本文结合实际开发踩坑案例，通俗讲解 Git</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://fengze-han.github.io/categories/Git/">Git</category>
-      
-      
-      <category domain="https://fengze-han.github.io/tags/Git/">Git</category>
-      
-      <category domain="https://fengze-han.github.io/tags/git-diff/">git diff</category>
-      
-      <category domain="https://fengze-han.github.io/tags/git-difftool/">git difftool</category>
-      
-      <category domain="https://fengze-han.github.io/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/">代码管理</category>
-      
-      
-      <comments>https://fengze-han.github.io/post/dd95e1f93a06/#disqus_thread</comments>
-      
-    </item>
     
     <item>
       <title>小米/红米纯手机端免解锁 ROOT 教程（KernelSU + LSPosed）</title>
@@ -98,6 +65,8 @@
       <category domain="https://fengze-han.github.io/categories/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/">硬件开发</category>
       
       
+      <category domain="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</category>
+      
       <category domain="https://fengze-han.github.io/tags/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/">硬件开发</category>
       
       <category domain="https://fengze-han.github.io/tags/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF/">电子电路</category>
@@ -105,8 +74,6 @@
       <category domain="https://fengze-han.github.io/tags/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机</category>
       
       <category domain="https://fengze-han.github.io/tags/PCB/">PCB</category>
-      
-      <category domain="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</category>
       
       
       <comments>https://fengze-han.github.io/post/712aa5355cb6/#disqus_thread</comments>
@@ -603,9 +570,9 @@
       <category domain="https://fengze-han.github.io/categories/%E6%9D%82%E9%A1%B9/">杂项</category>
       
       
-      <category domain="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</category>
-      
       <category domain="https://fengze-han.github.io/tags/GitHub/">GitHub</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</category>
       
       <category domain="https://fengze-han.github.io/tags/%E5%BC%80%E6%BA%90/">开源</category>
       
