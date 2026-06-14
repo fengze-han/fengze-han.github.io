@@ -15,8 +15,44 @@
     <atom:link href="https://fengze-han.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>Fenz 的个人博客：分享开发实践、读书笔记与日常思考。基于 Hexo 与 Redefine 主题构建。</description>
-    <pubDate>Sun, 14 Jun 2026 10:53:32 GMT</pubDate>
+    <pubDate>Sun, 14 Jun 2026 11:19:41 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>两个月没更新，说说心里话</title>
+      <link>https://fengze-han.github.io/post/27d1671fdd59/</link>
+      <guid>https://fengze-han.github.io/post/27d1671fdd59/</guid>
+      <pubDate>Sun, 14 Jun 2026 11:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;翻了一下上一篇文章的日期，才发现已经两个多月没更新了。&lt;/p&gt;
+&lt;p&gt;说实话，这段时间不是没东西可写，而是忙起来就顾不上了。工作上事情多，回家就想躺着，打开编辑器写两行又关掉，总觉得写得不够好、不够完整，拖着拖着就到了现在。&lt;/p&gt;
+&lt;p&gt;但回过头想想，这其实是个借口。&lt;strong&gt;Reflexivity&lt;/strong&gt;——这个词最近一直在脑子里转。反思自己，不是为了给自己找理由，而是为了看清问题在哪。&lt;/p&gt;
+&lt;p&gt;两个月不更新，本质上是&lt;strong&gt;没有把写作当成习惯&lt;/strong&gt;，而是当成了一件”有空再做的事”。但”有空”这个词，永远不会自己出现。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;接下来的计划&quot;&gt;&lt;a href=&quot;#接下来的计划&quot; class=&quot;headerlink&quot; title=&quot;接下来的计划&quot;&gt;&lt;/a&gt;接下来的计划&lt;/h2&gt;&lt;p&gt;目前在整理 BES</description>
+          
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>翻了一下上一篇文章的日期，才发现已经两个多月没更新了。</p><p>说实话，这段时间不是没东西可写，而是忙起来就顾不上了。工作上事情多，回家就想躺着，打开编辑器写两行又关掉，总觉得写得不够好、不够完整，拖着拖着就到了现在。</p><p>但回过头想想，这其实是个借口。<strong>Reflexivity</strong>——这个词最近一直在脑子里转。反思自己，不是为了给自己找理由，而是为了看清问题在哪。</p><p>两个月不更新，本质上是<strong>没有把写作当成习惯</strong>，而是当成了一件”有空再做的事”。但”有空”这个词，永远不会自己出现。</p><hr><h2 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h2><p>目前在整理 BES 平台的学习资料，把过去一年做助听器开发积累的笔记重新梳理了一遍。内容比较散，需要时间整理成体系。</p><p><strong>下个月开始</strong>，会正式上传 BES 学习日志，按系列更新。内容大概包括：</p><ul><li>开发环境搭建与踩坑记录</li><li>驱动开发的实战经验</li><li>蓝牙协议栈的理解与调试</li><li>音频处理相关的东西</li></ul><p>不一定写得多好，但会尽量写得<strong>真实</strong>——踩过什么坑、怎么解决的、当时怎么想的，都如实记录。</p><hr><p>给自己立个 flag：<strong>至少每周一篇</strong>。</p><hr><h3 id="Fenz"><a href="#Fenz" class="headerlink" title="Fenz"></a>Fenz</h3><p>写于一个难得清闲的周末晚上。希望这次能坚持久一点。</p>]]></content:encoded>
+      
+      
+      <category domain="https://fengze-han.github.io/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      
+      
+      <category domain="https://fengze-han.github.io/tags/%E9%9A%8F%E7%AC%94/">随笔</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E5%8F%8D%E6%80%9D/">反思</category>
+      
+      
+      <comments>https://fengze-han.github.io/post/27d1671fdd59/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>BES开发指南 - 写在前面</title>
@@ -382,9 +418,9 @@
       <category domain="https://fengze-han.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
       
       
-      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
-      
       <category domain="https://fengze-han.github.io/tags/C/">C++</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
       
       <category domain="https://fengze-han.github.io/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/">单链表</category>
       
@@ -418,9 +454,9 @@
       <category domain="https://fengze-han.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
       
       
-      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
-      
       <category domain="https://fengze-han.github.io/tags/C/">C++</category>
+      
+      <category domain="https://fengze-han.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
       
       <category domain="https://fengze-han.github.io/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/">顺序表</category>
       
